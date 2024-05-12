@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Recommendation - Result</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background-image: url("{{ url_for('static', filename='result_background.png') }}");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .result-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 10%;
+        }
+
+        .song-box {
+            width: 300px;
+            height: 220px;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .song-box h2 {
+            margin: 0;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .disclaimer-text {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            font-family: Arial, sans-serif;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <div class="song-box">
+            <h2 id="song1-name">{{ song_one_name }}</h2>
+            <audio id="song1" controls>
+                <source src="{{ url_for('static', filename=song_one_path) }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="song-box">
+            <h2 id="song2-name">{{ song_two_name }}</h2>
+            <audio id="song2" controls>
+                <source src="{{ url_for('static', filename=song_two_path) }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+    <div class="disclaimer-text">
+        Music Recommendation &copy; 2024
+    </div>
+</body>
+</html>
